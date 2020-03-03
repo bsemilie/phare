@@ -1,24 +1,28 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+const String lorem = """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis semper gravida velit, a blandit odio tristique at. Vivamus nec nisi in odio dictum ornare. In nec urna vel quam semper elementum vel eu nisl. Quisque laoreet sagittis neque at ornare. Proin fringilla nulla at nisi iaculis ullamcorper. Nullam mollis porttitor accumsan. Pellentesque tincidunt arcu feugiat massa elementum ullamcorper. In sit amet tortor consectetur, tempor orci non, rhoncus tortor. Duis volutpat mi id dolor accumsan scelerisque non sit amet odio. Vestibulum ornare libero id erat vehicula, et pharetra dolor laoreet. Integer at viverra justo. Nulla nec quam convallis, dapibus mi sit amet, fermentum odio. Cras nec metus mattis, dapibus velit sed, consequat nunc. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque tempor erat id nibh bibendum semper. Mauris bibendum, leo sagittis finibus posuere, risus mi bibendum diam, eget sodales leo magna vitae nibh.
+
+Sed commodo iaculis lorem id ultrices. Etiam vel sapien vitae nulla maximus lacinia. Ut euismod, risus quis consectetur ultrices, est ipsum luctus orci, sed ultricies nisl mauris quis ipsum. Vivamus placerat elit sem, ut dictum lacus imperdiet in. Etiam egestas leo a scelerisque rutrum. Aliquam congue mauris quis risus sollicitudin, id consectetur mauris maximus. In mattis volutpat diam vitae tempus. Aenean vitae mollis nisl, rutrum tincidunt nulla.
+
+Curabitur condimentum neque nulla, nec pharetra tortor imperdiet iaculis. Cras a velit iaculis nisi vestibulum ultricies et nec dui. Cras bibendum urna feugiat odio rutrum volutpat. Vestibulum placerat non est ac accumsan. Sed rutrum velit ex. Etiam tincidunt elementum rhoncus. Curabitur laoreet ultricies dui, placerat suscipit ante auctor dictum. Fusce eu aliquet ex. Fusce eget ipsum finibus, commodo ex et, vestibulum dolor. Aliquam ultricies congue lacus, euismod viverra purus vestibulum at. Curabitur ut commodo leo.
+
+Cras eget interdum metus, et tristique urna. Nullam malesuada dui libero, id euismod enim feugiat imperdiet. Sed scelerisque hendrerit sem, quis mattis urna. Vestibulum pellentesque dignissim dui, id suscipit quam sollicitudin at. Mauris mauris tellus, suscipit sit amet quam vel, mattis rhoncus ante. Mauris a mi sollicitudin, facilisis orci a, mattis quam. Integer ac justo massa.
+
+Proin molestie, urna non mattis venenatis, justo lorem viverra lectus, blandit mattis justo est scelerisque elit. Sed scelerisque lobortis odio non bibendum. Cras dapibus ultricies nunc ultricies tristique. Aliquam vitae luctus odio. Pellentesque et feugiat erat, at viverra sapien. Nunc a purus at nisl elementum volutpat sed vitae libero. Mauris et dolor id velit blandit luctus.""";
+
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -53,9 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+      backgroundColor: Colors.blue,
+      body: ListView(
         children: <Widget>[
           Container(
             height: 200.0,
@@ -84,69 +87,134 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Expanded(child: Card(child: Text("Desc"))),
-                      ],
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/bg.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  child: Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Card(
+                                  color: Colors.black54,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(lorem),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Card(
+                                  color: Colors.black54,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      children: <Widget>[
+                                        Text("Text"),
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(Icons.add),
+                                            Expanded(
+                                              child: Text("Func 1"),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(Icons.add),
+                                            Expanded(
+                                              child: Text("Func 2"),
+                                            )
+                                          ],
+                                        ),
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(Icons.add),
+                                            Expanded(
+                                              child: Text("Func 3"),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    Row(
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Expanded(
-                          child: Card(
+                        Card(
+                          color: Colors.black54,
+                          child: Padding(
+                            padding: const EdgeInsets.all(20.0),
                             child: Column(
                               children: <Widget>[
-                                Text("Text"),
-                                Row(
-                                  children: <Widget>[
-                                    Icon(Icons.add),
-                                    Expanded(
-                                      child: Text("DO"),
-                                    )
-                                  ],
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: "Nom d'utilisateur",
+                                    prefixIcon: Icon(Icons.people),
+                                  ),
                                 ),
+                                TextFormField(
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    hintText: "Mot de passe",
+                                    prefixIcon: Icon(Icons.vpn_key),
+                                  ),
+                                  obscureText: true,
+                                ),
+                                ButtonBar(
+                                  children: <Widget>[
+                                    OutlineButton(
+                                      onPressed: () {},
+                                      child: Text("Se connecter"),
+                                    ), // TODO Nav push
+                                    RaisedButton(
+                                      onPressed: () {},
+                                      child: Text("S'inscrire"),
+                                    ), // TODO Nav push
+                                  ],
+                                )
                               ],
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    Card(
-                      child: Column(
-                        children: <Widget>[
-                          Text("Text"),
-                          TextField(),
-                          Row(
-                            children: <Widget>[
-                              Icon(Icons.add),
-                              Expanded(
-                                child: Text("DO"),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
