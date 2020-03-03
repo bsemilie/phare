@@ -50,7 +50,7 @@ class _ProfileInfoState extends State<ProfileInfo>
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "TRIFUND",
+              "TRI-FUNDING",
               style: Theme.of(context).textTheme.headline1.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
