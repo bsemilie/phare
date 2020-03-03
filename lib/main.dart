@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
@@ -63,18 +63,23 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Stack(
-                  alignment: Alignment.center,
-                  children: <Widget>[
-                    Image.network(
-                      "https://www.numerama.com/content/uploads/2019/05/trou-noir-astronomie-univers-espace.jpg",
-                      fit: BoxFit.cover,
-                    ), // TODO : Add Image
-                    Text(
-                      "Placeholder",
-                      style: Theme.of(context).textTheme.headline1,
-                    ),
-                  ],
+                Expanded(
+                  child: Stack(
+                    fit: StackFit.passthrough,
+                    alignment: Alignment.center,
+                    children: <Widget>[
+                      Image.network(
+                        "https://www.numerama.com/content/uploads/2019/05/trou-noir-astronomie-univers-espace.jpg",
+                        fit: BoxFit.fitWidth,
+                      ), // TODO : Add Image
+                      Center(
+                        child: Text(
+                          "Placeholder",
+                          style: Theme.of(context).textTheme.headline1,
+                        ),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),
@@ -83,32 +88,63 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Placeholder(),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Placeholder(),
-                    ],
-                  )
-                ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Expanded(child: Card(child: Text("Desc"))),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          child: Card(
+                            child: Column(
+                              children: <Widget>[
+                                Text("Text"),
+                                Row(
+                                  children: <Widget>[
+                                    Icon(Icons.add),
+                                    Expanded(
+                                      child: Text("DO"),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: <Widget>[
-                  Placeholder(),
-                ],
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    Card(
+                      child: Column(
+                        children: <Widget>[
+                          Text("Text"),
+                          TextField(),
+                          Row(
+                            children: <Widget>[
+                              Icon(Icons.add),
+                              Expanded(
+                                child: Text("DO"),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
